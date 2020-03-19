@@ -153,6 +153,8 @@
     </ClInclude>
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="tlistqueue.h" />
+    <ClInclude Include="tqueue.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />

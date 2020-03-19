@@ -1,57 +1,65 @@
-#pragma once
+//tqueue.h
+#ifndef _tqueue_h
+#define _tqueue_h
+
 template <class T>
 class TQueue {
+
 	T* mas;
 	int MaxSize;
 	int Head, Tail;
-	int CurrSize;                // Текущий размер очереди
+	int CurrSize;
 public:
-	//Конструктор
-	TQueue(int _size = 5) {      
+
+	//constructor
+	TQueue(int _size = 5) {
 		MaxSize = _size;
 		mas = new T[MaxSize];
 		Head = 0;
 		Tail = -1;
 		CurrSize = 0;
 	}
-	//Деструктор 
-	~TQueue() {              
-		delete [] mas;
+
+	//destructor 
+	~TQueue() {
+		delete[] mas;
 	}
-	//Конструктор копирования
+
+	//copy cinstructor
 	TQueue(const TQueue<T>& q) {
 		MaxSize = q.MaxSize;
 		Head = q.Head;
 		Tail = q.Tail;
 		CurrSize = q.CurrSize;
 		mas = new T[MaxSize];
-		if (Head <= Tail){
+		if (Head <= Tail) {
 			for (int i = Head; i <= Tail; i++)
 				mas[i] = q.mas[i];
 		}
-		else{
+		else {
 			for (int i = Head; i < MaxSize; i++)
-							mas[i] = q.mas[i];
+				mas[i] = q.mas[i];
 			for (int i = 0; i <= Tail; i++)
 				mas[i] = q.mas[i];
 		}
 	}
-	//Оператор присваивания
+
+	//assignment operator
 	TQueue<T> operator=(const TQueue<T> &q) {
-		if (this != &q){
-			if (MaxSize != q.MaxSize){
+		if (this != &q) {
+			if (MaxSize != q.MaxSize) {
 				MaxSize = q.MaxSize;
-				delete [] mas;
+				delete[] mas;
 				mas = new T[MaxSize];
 			}
 			Head = q.Head;
 			Tail = q.Tail;
 			CurrSize = q.CurrSize;
-			if (Head <= Tail){
+			if (Head <= Tail) {
 				for (int i = Head; i <= Tail; i++)
 					mas[i] = q.mas[i];
 			}
-			else{
+			else {
 				for (int i = Head; i < MaxSize; i++)
 					mas[i] = q.mas[i];
 				for (int i = 0; i <= Tail; i++)
@@ -60,14 +68,16 @@ public:
 		}
 		return *this;
 	}
-	//Проверить пустая или полная
+
+	//check if full or empty
 	bool IsEmpty() const {
 		return (!CurrSize);
 	}
 	bool IsFull() const {
 		return (CurrSize == MaxSize);
 	}
-	//Положить в очередь
+
+	//insert into queue the queue
 	void Push(T a) {
 		if (IsFull()) throw - 1;
 		else {
@@ -82,7 +92,8 @@ public:
 			CurrSize++;
 		}
 	}
-	//Извлечь элемент из очереди
+
+	//extract from queue
 	T Pop() {
 		if (IsEmpty()) throw - 1;
 		int pos = Head;
@@ -93,26 +104,34 @@ public:
 		CurrSize--;
 		return mas[pos];
 	}
-	//Посмотреть, кто первый
-	 T Front() {
+
+	//see what's firsi
+	T Front() {
 		if (IsEmpty()) throw - 1;
 		else
 			return mas[Head];
 	}
-	//Посмотреть, кто последний
-	 T Back() {
+
+	//see what's last
+	T Back() {
 		if (IsEmpty()) throw - 1;
 		else
 			return mas[Tail];
 	}
-	int GetHead(){
-		 return Head;
+
+	//get the furst element int the queue
+	int GetHead() {
+		return Head;
 	}
+
+	//get max size of queue
 	int GetMaxSize() {
 		return MaxSize;
 	}
+
+	//get size of queue
 	int GetSize() {
 		return CurrSize;
 	}
 };
-
+#endif

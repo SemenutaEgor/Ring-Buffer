@@ -1,19 +1,25 @@
-#pragma once
+//tlistqueue.h
+#ifndef _tlistqueue_h
+#define _tlistqueue_h
 #include <iostream>
+
 template <class T>
-struct TNode{
+struct TNode {
 	T val;
 	TNode *pNext;
 };
+
 template <class T>
 class TQueue {
 	TNode<T> *pFirst, *pLast;
 public:
-	//конструктор
+
+	//constructor
 	TQueue() {
 		pFirst = pLast = NULL;
 	}
-	//деструктор
+
+	//destructor
 	~TQueue() {
 		TNode<T> *tmp = pFirst;
 		while (pFirst != NULL) {
@@ -23,7 +29,8 @@ public:
 		}
 		pLast = NULL;
 	}
-	//конструктор копирования
+
+	//copy contructor
 	TQueue(const TQueue<T>& q) {
 		TNode<T> *tmp = q.pFirst;
 		if (tmp == NULL)
@@ -34,7 +41,8 @@ public:
 		}
 		delete tmp;
 	}
-	//узнать размер
+
+	//get sixe of queue
 	int GetSize() {
 		TNode<T> *p = pFirst;
 		int k = 0;
@@ -44,15 +52,18 @@ public:
 		}
 		return k;
 	}
-	//начало
+
+	//get the first element of queue
 	int GetHead() {
 		return 0;
 	}
-	//максимальный размер
+
+	//get max size of queue
 	int GetMaxSize() {
 		return 10000;
 	}
-	//оператор присваивания
+
+	//assignment operator
 	TQueue<T> operator=(const TQueue<T>& q) {
 		if (this != &q) {
 			if (!IsEmpty())
@@ -70,11 +81,13 @@ public:
 		}
 		return *this;
 	}
-	//проверить на пустоту
+
+	//check for emtiness
 	bool IsEmpty()const {
 		return (pFirst == NULL);
 	}
-	//проверить на полноту
+
+	//full check
 	bool IsFull()const {
 		TNode<T> *tmp;
 		tmp = new TNode<T>;
@@ -85,7 +98,8 @@ public:
 			return 0;
 		}
 	}
-	//добавить элемент
+
+	//insert element into queue
 	void Push(T a) {
 		if (IsFull())
 			throw - 1;
@@ -101,11 +115,12 @@ public:
 				pFirst = pLast = tmp;
 		}
 	}
-	//извлчь элемент
+
+	//extract element from queue
 	T Pop() {
 		if (IsEmpty())
 			throw - 1;
-		else{
+		else {
 			T tmp = pFirst->val;
 			TNode<T> *p = pFirst;
 			pFirst = pFirst->pNext;
@@ -113,24 +128,27 @@ public:
 			return tmp;
 		}
 	}
-	//посмотреть, что в начале
+
+	//see what's first
 	T Front() {
 		if (IsEmpty())
 			throw - 1;
 		else
 			return pFirst->val;
 	}
-	//посмотреть, что в конце
+
+	//see what's last
 	T Back() {
 		if (IsEmpty())
 			throw - 1;
 		else
 			return pLast->val;
 	}
-	//очистить очередь
+
+	//clean queue
 	void Clear() {
 		TNode<T> *tmp = pFirst;
-		while (pFirst != NULL){
+		while (pFirst != NULL) {
 			pFirst = pFirst->pNext;
 			delete tmp;
 			tmp = pFirst;
@@ -138,3 +156,4 @@ public:
 		pLast = NULL;
 	}
 };
+#endif

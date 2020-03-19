@@ -1,3 +1,7 @@
-﻿  CppCLR_WinformsProjekt.cpp
+﻿  stdafx.cpp
+  AssemblyInfo.cpp
+  CppCLR_WinformsProjekt.cpp
+  Form1.cpp
+  Generating Code...
   AssemblyInfo.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  RingBuffer.vcxproj -> D:\Входящие\УЧЕНИЕ\АИСД\Лабы 3 семестр\RingBuffer\RingBuffer\Debug\RingBuffer.exe
+  RingBuffer.vcxproj -> D:\Входящие\УЧЕНИЕ\АИСД\Ring-Buffer\Debug\RingBuffer.exe

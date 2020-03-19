@@ -33,6 +33,12 @@
     <ClInclude Include="..\..\..\Queue\Queue\Queue\tqueue.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="tlistqueue.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="tqueue.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc">
